@@ -36,6 +36,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.compImageResolution = new System.Windows.Forms.DomainUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSaveSampleToFile = new System.Windows.Forms.Button();
+            this.btnAddToSamples = new System.Windows.Forms.Button();
+            this.btnLoadSamplesFromFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -131,12 +134,48 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Сегментов по \"X;Y\":\r\n";
             // 
+            // btnSaveSampleToFile
+            // 
+            this.btnSaveSampleToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSaveSampleToFile.Location = new System.Drawing.Point(798, 372);
+            this.btnSaveSampleToFile.Name = "btnSaveSampleToFile";
+            this.btnSaveSampleToFile.Size = new System.Drawing.Size(261, 71);
+            this.btnSaveSampleToFile.TabIndex = 4;
+            this.btnSaveSampleToFile.Text = "Сохранить в файл как образец";
+            this.btnSaveSampleToFile.UseVisualStyleBackColor = true;
+            this.btnSaveSampleToFile.Click += new System.EventHandler(this.btnSaveSampleToFile_Click);
+            // 
+            // btnAddToSamples
+            // 
+            this.btnAddToSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddToSamples.Location = new System.Drawing.Point(798, 463);
+            this.btnAddToSamples.Name = "btnAddToSamples";
+            this.btnAddToSamples.Size = new System.Drawing.Size(261, 66);
+            this.btnAddToSamples.TabIndex = 4;
+            this.btnAddToSamples.Text = "Использовать как один из образцов";
+            this.btnAddToSamples.UseVisualStyleBackColor = true;
+            this.btnAddToSamples.Click += new System.EventHandler(this.btnAddToSamples_Click);
+            // 
+            // btnLoadSamplesFromFile
+            // 
+            this.btnLoadSamplesFromFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLoadSamplesFromFile.Location = new System.Drawing.Point(798, 545);
+            this.btnLoadSamplesFromFile.Name = "btnLoadSamplesFromFile";
+            this.btnLoadSamplesFromFile.Size = new System.Drawing.Size(261, 66);
+            this.btnLoadSamplesFromFile.TabIndex = 6;
+            this.btnLoadSamplesFromFile.Text = "Загрузить образцы из файла";
+            this.btnLoadSamplesFromFile.UseVisualStyleBackColor = true;
+            this.btnLoadSamplesFromFile.Click += new System.EventHandler(this.btnLoadSamplesFromFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 670);
+            this.Controls.Add(this.btnLoadSamplesFromFile);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnAddToSamples);
+            this.Controls.Add(this.btnSaveSampleToFile);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClearInitPB);
@@ -163,6 +202,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DomainUpDown compImageResolution;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSaveSampleToFile;
+        private System.Windows.Forms.Button btnAddToSamples;
+        private System.Windows.Forms.Button btnLoadSamplesFromFile;
     }
 }
 
