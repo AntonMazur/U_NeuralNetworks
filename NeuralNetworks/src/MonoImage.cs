@@ -31,7 +31,6 @@ namespace NeuralNetworks.src
             this.comp = new Size(width, height);
             this.compImage = compress(this.imageArr, width, height);
             this.scaleCoef = new Size(orig.Width / comp.Width, orig.Height / comp.Height);
-            var a = 1;
         }
 
         public int width()

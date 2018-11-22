@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworks.src.networks.hamming.neurons
 {
-    class HiddenNeuron
+    public class HiddenNeuron
     {
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworks.src.networks.hamming
 {
-    class Sample
+    public class Sample
     {
-        string description;
-        bool[,] imgArr;
-        int width;
-        int height;
+        private string description;
+        private bool[,] imgArr;
+        private BitArray flattenImgArr;
+        public readonly int width;
+        public readonly int height;
+        public readonly int area;
 
         public Sample(string description, bool[,] imgArr)
         {
@@ -20,6 +23,8 @@ namespace NeuralNetworks.src.networks.hamming
             this.imgArr = imgArr;
             this.width = imgArr.GetLength(1);
             this.height = imgArr.GetLength(0);
+            this.flattenImgArr = toBitArray();
+            this.area = width * height;
         }
 
         public override string ToString()
@@ -31,6 +36,19 @@ namespace NeuralNetworks.src.networks.hamming
                     strBoolArr.Append(imgArr[i, j] ? "1" : "0");
 
             return description.Length + " " + description + " " + height + " " + width + " " + strBoolArr.ToString() + "\n";
+        }
+
+        public BitArray asBitArray() { return flattenImgArr; }
+
+        private BitArray toBitArray()
+        {
+            var res = new BitArray(width * height);
+
+            for (int i = 0; i < height; i++)
+                for (int j = 0; j < width; j++)
+                    res.Set(i * width + j, imgArr[i, j]);
+
+            return res;
         }
 
         public static Sample FromString(string str)
@@ -65,5 +83,29 @@ namespace NeuralNetworks.src.networks.hamming
         {
             return int.Parse(Regex.Match(source, @"\d+").Value);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <returns> Row of result array - is a sample, column - is a component values of different samples </returns>
+        public static double[,] toWeightArray(Sample[] samples)
+        {
+            if (samples.Length == 0) return new double[0, 0];
+
+            double[,] weights = new double[samples.Length, samples[0].area];
+
+            for (int i = 0; i < samples.Length; i++)
+            {
+                var sampleArray = samples[i].asBitArray();
+                for (int j = 0; j < samples[0].area; j++)
+                {
+                    weights[i, j] = Utils.boolToNum(sampleArray.Get(j));
+                }
+            }
+
+            return weights;
+        }
+
     }
 }
