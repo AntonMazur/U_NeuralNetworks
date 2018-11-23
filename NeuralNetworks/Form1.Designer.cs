@@ -39,9 +39,19 @@
             this.btnSaveSampleToFile = new System.Windows.Forms.Button();
             this.btnAddToSamples = new System.Windows.Forms.Button();
             this.btnLoadSamplesFromFile = new System.Windows.Forms.Button();
+            this.pbResult = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelResDesc = new System.Windows.Forms.Label();
+            this.showInputImage = new System.Windows.Forms.Button();
+            this.btnResetSamples = new System.Windows.Forms.Button();
+            this.rbthHamming = new System.Windows.Forms.RadioButton();
+            this.rbtnHabb = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // picBoxInit
@@ -68,9 +78,9 @@
             // btnClearInitPB
             // 
             this.btnClearInitPB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnClearInitPB.Location = new System.Drawing.Point(465, 361);
+            this.btnClearInitPB.Location = new System.Drawing.Point(392, 377);
             this.btnClearInitPB.Name = "btnClearInitPB";
-            this.btnClearInitPB.Size = new System.Drawing.Size(134, 47);
+            this.btnClearInitPB.Size = new System.Drawing.Size(285, 66);
             this.btnClearInitPB.TabIndex = 2;
             this.btnClearInitPB.Text = "Очистить";
             this.btnClearInitPB.UseVisualStyleBackColor = true;
@@ -167,11 +177,104 @@
             this.btnLoadSamplesFromFile.UseVisualStyleBackColor = true;
             this.btnLoadSamplesFromFile.Click += new System.EventHandler(this.btnLoadSamplesFromFile_Click);
             // 
+            // pbResult
+            // 
+            this.pbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pbResult.Location = new System.Drawing.Point(1132, 35);
+            this.pbResult.Name = "pbResult";
+            this.pbResult.Size = new System.Drawing.Size(320, 320);
+            this.pbResult.TabIndex = 7;
+            this.pbResult.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(1127, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 25);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Похоже на";
+            // 
+            // labelResDesc
+            // 
+            this.labelResDesc.AutoSize = true;
+            this.labelResDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelResDesc.Location = new System.Drawing.Point(1145, 372);
+            this.labelResDesc.Name = "labelResDesc";
+            this.labelResDesc.Size = new System.Drawing.Size(0, 25);
+            this.labelResDesc.TabIndex = 9;
+            // 
+            // showInputImage
+            // 
+            this.showInputImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showInputImage.Location = new System.Drawing.Point(392, 463);
+            this.showInputImage.Name = "showInputImage";
+            this.showInputImage.Size = new System.Drawing.Size(285, 66);
+            this.showInputImage.TabIndex = 10;
+            this.showInputImage.Text = "Показать обрабатываемое изображение";
+            this.showInputImage.UseVisualStyleBackColor = true;
+            this.showInputImage.Click += new System.EventHandler(this.showInputImage_Click);
+            // 
+            // btnResetSamples
+            // 
+            this.btnResetSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnResetSamples.Location = new System.Drawing.Point(798, 635);
+            this.btnResetSamples.Name = "btnResetSamples";
+            this.btnResetSamples.Size = new System.Drawing.Size(261, 66);
+            this.btnResetSamples.TabIndex = 11;
+            this.btnResetSamples.Text = "Удалить сохранённые образцы";
+            this.btnResetSamples.UseVisualStyleBackColor = true;
+            this.btnResetSamples.Click += new System.EventHandler(this.btnResetSamples_Click);
+            // 
+            // rbthHamming
+            // 
+            this.rbthHamming.AutoSize = true;
+            this.rbthHamming.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbthHamming.Location = new System.Drawing.Point(25, 37);
+            this.rbthHamming.Name = "rbthHamming";
+            this.rbthHamming.Size = new System.Drawing.Size(183, 29);
+            this.rbthHamming.TabIndex = 12;
+            this.rbthHamming.TabStop = true;
+            this.rbthHamming.Text = "Сеть Хэмминга";
+            this.rbthHamming.UseVisualStyleBackColor = true;
+            this.rbthHamming.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // rbtnHabb
+            // 
+            this.rbtnHabb.AutoSize = true;
+            this.rbtnHabb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbtnHabb.Location = new System.Drawing.Point(25, 72);
+            this.rbtnHabb.Name = "rbtnHabb";
+            this.rbtnHabb.Size = new System.Drawing.Size(141, 29);
+            this.rbtnHabb.TabIndex = 13;
+            this.rbtnHabb.TabStop = true;
+            this.rbtnHabb.Text = "Сеть Хэбба";
+            this.rbtnHabb.UseVisualStyleBackColor = true;
+            this.rbtnHabb.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbtnHabb);
+            this.groupBox2.Controls.Add(this.rbthHamming);
+            this.groupBox2.Location = new System.Drawing.Point(28, 463);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(319, 154);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Используемая сеть";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 670);
+            this.ClientSize = new System.Drawing.Size(1464, 739);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnResetSamples);
+            this.Controls.Add(this.showInputImage);
+            this.Controls.Add(this.labelResDesc);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pbResult);
             this.Controls.Add(this.btnLoadSamplesFromFile);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAddToSamples);
@@ -181,12 +284,16 @@
             this.Controls.Add(this.btnClearInitPB);
             this.Controls.Add(this.picBoxCropped);
             this.Controls.Add(this.picBoxInit);
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +312,14 @@
         private System.Windows.Forms.Button btnSaveSampleToFile;
         private System.Windows.Forms.Button btnAddToSamples;
         private System.Windows.Forms.Button btnLoadSamplesFromFile;
+        private System.Windows.Forms.PictureBox pbResult;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelResDesc;
+        private System.Windows.Forms.Button showInputImage;
+        private System.Windows.Forms.Button btnResetSamples;
+        private System.Windows.Forms.RadioButton rbthHamming;
+        private System.Windows.Forms.RadioButton rbtnHabb;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

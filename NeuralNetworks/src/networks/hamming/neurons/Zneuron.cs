@@ -16,8 +16,9 @@ namespace NeuralNetworks.src.networks.hamming.neurons
 
 
         public ZNeuron(double[,] inputWeights, int sampleIndex) {
+            sample = new double[inputWeights.GetLength(1)];
 
-            for (int i = 0; i < inputWeights.GetLength(1); i++)
+            for (int i = 0; i < sample.Length; i++)
             {
                 sample[i] = inputWeights[sampleIndex, i];
             }
@@ -30,7 +31,7 @@ namespace NeuralNetworks.src.networks.hamming.neurons
             ZNeuron.k = k;
         }
 
-        public void sendSignal(Sample testSample)
+        private void sendSignal(Sample testSample)
         {
             var testSampleArr = testSample.asBitArray();
             double state = testSampleArr.Length / 2;
@@ -49,8 +50,9 @@ namespace NeuralNetworks.src.networks.hamming.neurons
             return input < 0 ? 0 : (input < threshold ? input * k : threshold);
         }
 
-        public static int getDominateSample(ZNeuron[] neurons)
+        public static int getDominateSample(ZNeuron[] neurons, Sample testSample)
         {
+            foreach (ZNeuron n in neurons) n.sendSignal(testSample);
             
             double eps = 1 / neurons.Length;
             double[] prevLayerState;

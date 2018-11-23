@@ -12,7 +12,7 @@ namespace NeuralNetworks.src
 {
     class MonoImage
     {
-        private Size orig;
+        public static Size orig;
         private Size comp;
         private Size scaleCoef;
         private bool[,] imageArr;
@@ -20,8 +20,8 @@ namespace NeuralNetworks.src
 
         public MonoImage(bool[,] image)
         {
-            this.orig = new Size(image.GetLength(0), image.GetLength(1));
             this.imageArr = image;
+            MonoImage.orig = new Size(image.GetLength(1), image.GetLength(0));
         }
 
         public MonoImage(Image image) : this(toMonoArr(image)) {}
@@ -35,12 +35,12 @@ namespace NeuralNetworks.src
 
         public int width()
         {
-            return imageArr.GetLength(0);
+            return imageArr.GetLength(1);
         }
 
         public int height()
         {
-            return imageArr.GetLength(1);
+            return imageArr.GetLength(0);
         }
 
         public bool getVal(int row, int column)
@@ -51,6 +51,39 @@ namespace NeuralNetworks.src
         public bool[,] getCompressedImageArr()
         {
             return compImage;
+        }
+
+        public static Image getCompressedImage(bool[,] compImage)
+        {
+            var res = new Bitmap(orig.Width, orig.Height);
+            var resArray = new byte[orig.Height * orig.Width];
+            var comp = new Size(compImage.GetLength(1), compImage.GetLength(0));
+            var scaleCoef = new Size(orig.Width / comp.Width, orig.Height / comp.Height);
+
+            for (int i = 0; i < comp.Height; i++)
+            {
+                for (int j = 0; j < comp.Width; j++)
+                {
+                    var isBlack = compImage[i, j];
+                    var startH = i * scaleCoef.Height;
+                    for (int k = startH; k < (orig.Height < startH + 2 * scaleCoef.Height ? orig.Height : startH + scaleCoef.Height); k++)
+                    {
+                        var startW = j * scaleCoef.Width;
+                        for (int l = startW; l < (orig.Width < startW + 2 * scaleCoef.Width ? orig.Width : startW + scaleCoef.Width); l++)
+                        {
+                            resArray[k * orig.Width + l] = (byte)(isBlack ? 0 : 255);
+                        }
+                    }
+                }
+            }
+
+            var bmpdata = res.LockBits(new Rectangle(0, 0, res.Width, res.Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+            int numbytes = bmpdata.Stride * res.Height;
+            IntPtr ptr = bmpdata.Scan0;
+            Marshal.Copy(resArray, 0, ptr, numbytes);
+            res.UnlockBits(bmpdata);
+
+            return res;
         }
 
         public Image getCompressedImage()

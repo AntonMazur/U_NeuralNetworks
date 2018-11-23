@@ -66,7 +66,7 @@
     <Compile Include="src\networks\hamming\neurons\InputNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\OutputNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\ZNeuron.cs" />
-    <Compile Include="src\networks\hamming\Sample.cs" />
+    <Compile Include="src\networks\Sample.cs" />
     <Compile Include="src\networks\Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -6,12 +6,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace NeuralNetworks.src.networks.hamming
+namespace NeuralNetworks.src.networks
 {
     public class Sample
     {
-        private string description;
-        private bool[,] imgArr;
+        public readonly string description;
+        public readonly bool[,] imgArr;
         private BitArray flattenImgArr;
         public readonly int width;
         public readonly int height;

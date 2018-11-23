@@ -10,7 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworks.src;
-using NeuralNetworks.src.networks.hamming;
+using hamming = NeuralNetworks.src.networks.hamming;
+using NeuralNetworks.src.networks;
 
 namespace NeuralNetworks
 {
@@ -24,6 +25,8 @@ namespace NeuralNetworks
         public Form1()
         {
             InitializeComponent();
+            rbthHamming.Checked = true;
+            compImageResolution.SelectedItem = compImageResolution.Items[0];
         }
 
         private void picBoxInit_MouseDown(object sender, MouseEventArgs e)
@@ -82,9 +85,20 @@ namespace NeuralNetworks
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            var workingImage = getWorkingImage();
-            picBoxCropped.Image = workingImage.getCompressedImage();
-            this.state.pbState = new WorkingPicBoxState(workingImage.getCompressedImageArr());
+            showInputImage_Click(sender, e);
+
+            Sample targetSample;
+            switch (state.chosenNetwork)
+            {
+                case 1:
+                    targetSample = hamming.Network.run(state.samples.ToArray(), new Sample("Test sample", state.pbState.imgArr));
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            pbResult.Image = MonoImage.getCompressedImage(targetSample.imgArr);
+            labelResDesc.Text = targetSample.description;
         }
 
         private MonoImage getWorkingImage()
@@ -144,12 +158,32 @@ namespace NeuralNetworks
 
         private void btnAddToSamples_Click(object sender, EventArgs e)
         {
-            btnRun_Click(sender, e);
+            showInputImage_Click(sender, e);
 
             var descriptionForm = new SampleDescriptionForm();
             descriptionForm.ShowDialog();
 
             state.addSample(new Sample(descriptionForm.getInput(), state.pbState.imgArr));
+        }
+
+        private void showInputImage_Click(object sender, EventArgs e)
+        {
+            var workingImage = getWorkingImage();
+            picBoxCropped.Image = workingImage.getCompressedImage();
+            this.state.pbState = new WorkingPicBoxState(workingImage.getCompressedImageArr());
+        }
+
+        private void btnResetSamples_Click(object sender, EventArgs e)
+        {
+            state.samples.Clear();
+        }
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            var rb = sender as RadioButton;
+            if (!rb.Checked) return;
+            state.chosenNetwork = rb.Parent.Controls.IndexOf(rb);
+            MessageBox.Show("Chosen network: " + state.chosenNetwork);
         }
     }
 
@@ -166,7 +200,8 @@ namespace NeuralNetworks
     class FormState
     {
         public WorkingPicBoxState pbState { get; set; }
-        List<Sample> samples = new List<Sample>();
+        public List<Sample> samples = new List<Sample>();
+        public int chosenNetwork = 1;
 
         public bool addSample(Sample sample)
         {
@@ -174,5 +209,6 @@ namespace NeuralNetworks
             samples.Add(sample);
             return true;
         }
+
     }
 }
