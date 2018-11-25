@@ -87,11 +87,14 @@ namespace NeuralNetworks
         {
             showInputImage_Click(sender, e);
 
-            Sample targetSample;
+            Sample targetSample = null;
+
             switch (state.chosenNetwork)
             {
                 case 1:
                     targetSample = hamming.Network.run(state.samples.ToArray(), new Sample("Test sample", state.pbState.imgArr));
+                    break;
+                case 0:
                     break;
                 default:
                     throw new NotImplementedException();

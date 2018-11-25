@@ -66,6 +66,7 @@
     <Compile Include="src\networks\hamming\neurons\InputNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\OutputNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\ZNeuron.cs" />
+    <Compile Include="src\networks\hebb\Network.cs" />
     <Compile Include="src\networks\Sample.cs" />
     <Compile Include="src\networks\Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -96,5 +97,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

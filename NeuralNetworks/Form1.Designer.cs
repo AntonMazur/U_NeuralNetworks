@@ -45,7 +45,7 @@
             this.showInputImage = new System.Windows.Forms.Button();
             this.btnResetSamples = new System.Windows.Forms.Button();
             this.rbthHamming = new System.Windows.Forms.RadioButton();
-            this.rbtnHabb = new System.Windows.Forms.RadioButton();
+            this.rbtnHebb = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).BeginInit();
@@ -240,22 +240,22 @@
             this.rbthHamming.UseVisualStyleBackColor = true;
             this.rbthHamming.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
-            // rbtnHabb
+            // rbtnHebb
             // 
-            this.rbtnHabb.AutoSize = true;
-            this.rbtnHabb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rbtnHabb.Location = new System.Drawing.Point(25, 72);
-            this.rbtnHabb.Name = "rbtnHabb";
-            this.rbtnHabb.Size = new System.Drawing.Size(141, 29);
-            this.rbtnHabb.TabIndex = 13;
-            this.rbtnHabb.TabStop = true;
-            this.rbtnHabb.Text = "Сеть Хэбба";
-            this.rbtnHabb.UseVisualStyleBackColor = true;
-            this.rbtnHabb.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.rbtnHebb.AutoSize = true;
+            this.rbtnHebb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbtnHebb.Location = new System.Drawing.Point(25, 72);
+            this.rbtnHebb.Name = "rbtnHebb";
+            this.rbtnHebb.Size = new System.Drawing.Size(141, 29);
+            this.rbtnHebb.TabIndex = 13;
+            this.rbtnHebb.TabStop = true;
+            this.rbtnHebb.Text = "Сеть Хэбба";
+            this.rbtnHebb.UseVisualStyleBackColor = true;
+            this.rbtnHebb.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rbtnHabb);
+            this.groupBox2.Controls.Add(this.rbtnHebb);
             this.groupBox2.Controls.Add(this.rbthHamming);
             this.groupBox2.Location = new System.Drawing.Point(28, 463);
             this.groupBox2.Name = "groupBox2";
@@ -318,7 +318,7 @@
         private System.Windows.Forms.Button showInputImage;
         private System.Windows.Forms.Button btnResetSamples;
         private System.Windows.Forms.RadioButton rbthHamming;
-        private System.Windows.Forms.RadioButton rbtnHabb;
+        private System.Windows.Forms.RadioButton rbtnHebb;
         private System.Windows.Forms.GroupBox groupBox2;
     }
 }
