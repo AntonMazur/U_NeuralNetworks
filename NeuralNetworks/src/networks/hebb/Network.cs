@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,17 +11,26 @@ namespace NeuralNetworks.src.networks.hebb
     {
         public static Sample run(Sample[] samples, Sample testSample)
         {
-            
+
+            //double[] weights = learn()
             
 
             throw new NotImplementedException("No implementation for hebb network");
+        }
+
+        public static Sample run(Sample[] samples, string weightsFile, Sample testSample)
+        {
+            //double[,] weights = readWeightsFromFile(weightsFile);
+
+            throw new NotImplementedException("No implementation for hebb network");
+
         }
 
         private static double[,] learn(Sample[] samples, HebbSample[] hSamples)
         {
             int sampleLen = samples[0].area;
             HebbSample.resetState();
-            HebbSample.digitCount = (int)Math.Ceiling(Math.Log(samples.Length, 2));
+            HebbSample.digitCount = samples.Length;
             double[,] weights = new double[HebbSample.digitCount, sampleLen];  // row - weights of edges from inputs to first neuron, column - weights of edges from the input to all neurons
 
 
@@ -68,6 +78,21 @@ namespace NeuralNetworks.src.networks.hebb
 
             return input * output > 0 ? 1 : -1;
         }
+
+        private static double[,] readWeightsFromFile(string file)
+        {
+            var fileTokens = File.ReadAllLines(file)
+                .Select(line => line.Split(' ')
+                .Select(token => token).ToArray()).ToArray();
+
+            var weights = new double[fileTokens.Length, fileTokens[0].Length];
+
+            for (int i = 0; i < fileTokens.Length; i++)
+                for (int j = 0; j < fileTokens[0].Length; j++)
+                    weights[i, j] = double.Parse(fileTokens[i][j]);
+
+            return weights;
+        }
     }
 
     struct HebbSample
@@ -85,7 +110,7 @@ namespace NeuralNetworks.src.networks.hebb
 
         public double getNeuronOutput(int neuronNum)
         {
-            return Utils.boolToNum(((counter >> neuronNum) & 1) == 1);
+            return networkOutput[neuronNum];
         }
 
         public static void resetState()
@@ -104,9 +129,9 @@ namespace NeuralNetworks.src.networks.hebb
             var result = new double[digitCount];
 
             for (int i = 0; i < digitCount; i++)
-                result[i] = Utils.boolToNum(((counter >> i) & 1) == 1);
+                result[i] = -1;
 
-            counter++;
+            result[counter++] = 1;
 
             return result;
         }

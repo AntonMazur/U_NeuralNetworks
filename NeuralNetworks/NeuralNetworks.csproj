@@ -62,9 +62,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\networks\hamming\Network.cs" />
-    <Compile Include="src\networks\hamming\neurons\HiddenNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\InputNeuron.cs" />
-    <Compile Include="src\networks\hamming\neurons\OutputNeuron.cs" />
     <Compile Include="src\networks\hamming\neurons\ZNeuron.cs" />
     <Compile Include="src\networks\hebb\Network.cs" />
     <Compile Include="src\networks\Sample.cs" />
