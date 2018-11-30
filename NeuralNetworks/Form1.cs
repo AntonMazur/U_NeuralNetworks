@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetworks.src;
 using hamming = NeuralNetworks.src.networks.hamming;
+using hebb = NeuralNetworks.src.networks.hebb;
 using NeuralNetworks.src.networks;
 
 namespace NeuralNetworks
@@ -127,8 +128,7 @@ namespace NeuralNetworks
                 {
                     if ((myStream = saveFileDialog1.OpenFile()) != null)
                     {
-                        var deserSample = Sample.FromString(new Sample(descriptionForm.getInput(), state.pbState.imgArr).ToString());
-                        var bytesToWrite = Encoding.UTF8.GetBytes(new Sample(descriptionForm.getInput(), state.pbState.imgArr).ToString());
+                        var bytesToWrite = Encoding.UTF8.GetBytes(state.ToString());
                         myStream.Write(bytesToWrite, 0, bytesToWrite.Length);
                         myStream.Close();
                     }
@@ -188,6 +188,21 @@ namespace NeuralNetworks
             state.chosenNetwork = rb.Parent.Controls.IndexOf(rb);
             MessageBox.Show("Chosen network: " + state.chosenNetwork);
         }
+
+        private void btnLearnNetwork_Click(object sender, EventArgs e)
+        {
+            switch (state.chosenNetwork)
+            {
+                case 1:
+                    return;
+                    break;
+                case 0:
+                    hebb.Network.
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
     }
 
     class WorkingPicBoxState
@@ -211,6 +226,11 @@ namespace NeuralNetworks
             if (sample == null) return false;
             samples.Add(sample);
             return true;
+        }
+
+        public override string ToString()
+        {
+            return String.Join("", samples.Select(s => s.ToString()));
         }
 
     }

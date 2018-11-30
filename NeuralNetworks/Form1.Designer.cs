@@ -47,6 +47,7 @@
             this.rbthHamming = new System.Windows.Forms.RadioButton();
             this.rbtnHebb = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLearnNetwork = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -99,7 +100,7 @@
             // btnRun
             // 
             this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRun.Location = new System.Drawing.Point(53, 46);
+            this.btnRun.Location = new System.Drawing.Point(49, 46);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(261, 45);
             this.btnRun.TabIndex = 4;
@@ -113,7 +114,7 @@
             this.groupBox1.Controls.Add(this.compImageResolution);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(28, 126);
+            this.groupBox1.Location = new System.Drawing.Point(24, 198);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 303);
             this.groupBox1.TabIndex = 5;
@@ -151,7 +152,7 @@
             this.btnSaveSampleToFile.Name = "btnSaveSampleToFile";
             this.btnSaveSampleToFile.Size = new System.Drawing.Size(261, 71);
             this.btnSaveSampleToFile.TabIndex = 4;
-            this.btnSaveSampleToFile.Text = "Сохранить в файл как образец";
+            this.btnSaveSampleToFile.Text = "Сохранить образцы в файл";
             this.btnSaveSampleToFile.UseVisualStyleBackColor = true;
             this.btnSaveSampleToFile.Click += new System.EventHandler(this.btnSaveSampleToFile_Click);
             // 
@@ -257,18 +258,30 @@
             // 
             this.groupBox2.Controls.Add(this.rbtnHebb);
             this.groupBox2.Controls.Add(this.rbthHamming);
-            this.groupBox2.Location = new System.Drawing.Point(28, 463);
+            this.groupBox2.Location = new System.Drawing.Point(24, 535);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(319, 154);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Используемая сеть";
             // 
+            // btnLearnNetwork
+            // 
+            this.btnLearnNetwork.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLearnNetwork.Location = new System.Drawing.Point(49, 110);
+            this.btnLearnNetwork.Name = "btnLearnNetwork";
+            this.btnLearnNetwork.Size = new System.Drawing.Size(261, 45);
+            this.btnLearnNetwork.TabIndex = 15;
+            this.btnLearnNetwork.Text = "Обучить";
+            this.btnLearnNetwork.UseVisualStyleBackColor = true;
+            this.btnLearnNetwork.Click += new System.EventHandler(this.btnLearnNetwork_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1464, 739);
+            this.Controls.Add(this.btnLearnNetwork);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnResetSamples);
             this.Controls.Add(this.showInputImage);
@@ -320,6 +333,7 @@
         private System.Windows.Forms.RadioButton rbthHamming;
         private System.Windows.Forms.RadioButton rbtnHebb;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnLearnNetwork;
     }
 }
 

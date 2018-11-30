@@ -26,8 +26,9 @@ namespace NeuralNetworks.src.networks.hebb
 
         }
 
-        private static double[,] learn(Sample[] samples, HebbSample[] hSamples)
+        private static double[,] learn(Sample[] samples)
         {
+            var hSamples = HebbSample.convertAll(samples);
             int sampleLen = samples[0].area;
             HebbSample.resetState();
             HebbSample.digitCount = samples.Length;
