@@ -30,35 +30,44 @@
         {
             this.picBoxInit = new System.Windows.Forms.PictureBox();
             this.picBoxCropped = new System.Windows.Forms.PictureBox();
-            this.btnClearInitPB = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRun = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.compImageResolution = new System.Windows.Forms.DomainUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSaveSampleToFile = new System.Windows.Forms.Button();
-            this.btnAddToSamples = new System.Windows.Forms.Button();
-            this.btnLoadSamplesFromFile = new System.Windows.Forms.Button();
             this.pbResult = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelResDesc = new System.Windows.Forms.Label();
-            this.showInputImage = new System.Windows.Forms.Button();
-            this.btnResetSamples = new System.Windows.Forms.Button();
-            this.rbthHamming = new System.Windows.Forms.RadioButton();
-            this.rbtnHebb = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnLearnNetwork = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.используемыеОбразцыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.исходноеИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьОбрабатываемоеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьКакОбразецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обрабатываемоеИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.используемаяНейроннаяСетьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сетьХеммингаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сетьХеббаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обучитьСетьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запускСетиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // picBoxInit
             // 
             this.picBoxInit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.picBoxInit.Location = new System.Drawing.Point(371, 35);
+            this.picBoxInit.Location = new System.Drawing.Point(20, 84);
             this.picBoxInit.Name = "picBoxInit";
             this.picBoxInit.Size = new System.Drawing.Size(320, 320);
             this.picBoxInit.TabIndex = 0;
@@ -70,118 +79,26 @@
             // picBoxCropped
             // 
             this.picBoxCropped.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.picBoxCropped.Location = new System.Drawing.Point(768, 35);
+            this.picBoxCropped.Location = new System.Drawing.Point(346, 84);
             this.picBoxCropped.Name = "picBoxCropped";
             this.picBoxCropped.Size = new System.Drawing.Size(320, 320);
             this.picBoxCropped.TabIndex = 1;
             this.picBoxCropped.TabStop = false;
             // 
-            // btnClearInitPB
-            // 
-            this.btnClearInitPB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnClearInitPB.Location = new System.Drawing.Point(392, 377);
-            this.btnClearInitPB.Name = "btnClearInitPB";
-            this.btnClearInitPB.Size = new System.Drawing.Size(285, 66);
-            this.btnClearInitPB.TabIndex = 2;
-            this.btnClearInitPB.Text = "Очистить";
-            this.btnClearInitPB.UseVisualStyleBackColor = true;
-            this.btnClearInitPB.Click += new System.EventHandler(this.btnClearInitPB_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(770, 7);
+            this.label1.Location = new System.Drawing.Point(348, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(307, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Обрабатываемое изображение";
             // 
-            // btnRun
-            // 
-            this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnRun.Location = new System.Drawing.Point(49, 46);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(261, 45);
-            this.btnRun.TabIndex = 4;
-            this.btnRun.Text = "Классифицировать";
-            this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.compImageResolution);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(24, 198);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 303);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Пар-ры обрабатываемого изображения";
-            // 
-            // compImageResolution
-            // 
-            this.compImageResolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.compImageResolution.Items.Add("4;4");
-            this.compImageResolution.Items.Add("6;6");
-            this.compImageResolution.Items.Add("8;8");
-            this.compImageResolution.Items.Add("12;12");
-            this.compImageResolution.Items.Add("16;16");
-            this.compImageResolution.Location = new System.Drawing.Point(36, 139);
-            this.compImageResolution.Name = "compImageResolution";
-            this.compImageResolution.Size = new System.Drawing.Size(189, 30);
-            this.compImageResolution.TabIndex = 0;
-            this.compImageResolution.Text = "4;4";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(30, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(201, 25);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Сегментов по \"X;Y\":\r\n";
-            // 
-            // btnSaveSampleToFile
-            // 
-            this.btnSaveSampleToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSaveSampleToFile.Location = new System.Drawing.Point(798, 372);
-            this.btnSaveSampleToFile.Name = "btnSaveSampleToFile";
-            this.btnSaveSampleToFile.Size = new System.Drawing.Size(261, 71);
-            this.btnSaveSampleToFile.TabIndex = 4;
-            this.btnSaveSampleToFile.Text = "Сохранить образцы в файл";
-            this.btnSaveSampleToFile.UseVisualStyleBackColor = true;
-            this.btnSaveSampleToFile.Click += new System.EventHandler(this.btnSaveSampleToFile_Click);
-            // 
-            // btnAddToSamples
-            // 
-            this.btnAddToSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddToSamples.Location = new System.Drawing.Point(798, 463);
-            this.btnAddToSamples.Name = "btnAddToSamples";
-            this.btnAddToSamples.Size = new System.Drawing.Size(261, 66);
-            this.btnAddToSamples.TabIndex = 4;
-            this.btnAddToSamples.Text = "Использовать как один из образцов";
-            this.btnAddToSamples.UseVisualStyleBackColor = true;
-            this.btnAddToSamples.Click += new System.EventHandler(this.btnAddToSamples_Click);
-            // 
-            // btnLoadSamplesFromFile
-            // 
-            this.btnLoadSamplesFromFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLoadSamplesFromFile.Location = new System.Drawing.Point(798, 545);
-            this.btnLoadSamplesFromFile.Name = "btnLoadSamplesFromFile";
-            this.btnLoadSamplesFromFile.Size = new System.Drawing.Size(261, 66);
-            this.btnLoadSamplesFromFile.TabIndex = 6;
-            this.btnLoadSamplesFromFile.Text = "Загрузить образцы из файла";
-            this.btnLoadSamplesFromFile.UseVisualStyleBackColor = true;
-            this.btnLoadSamplesFromFile.Click += new System.EventHandler(this.btnLoadSamplesFromFile_Click);
-            // 
             // pbResult
             // 
             this.pbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pbResult.Location = new System.Drawing.Point(1132, 35);
+            this.pbResult.Location = new System.Drawing.Point(672, 84);
             this.pbResult.Name = "pbResult";
             this.pbResult.Size = new System.Drawing.Size(320, 320);
             this.pbResult.TabIndex = 7;
@@ -191,7 +108,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1127, 7);
+            this.label2.Location = new System.Drawing.Point(685, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 25);
             this.label2.TabIndex = 8;
@@ -201,112 +118,233 @@
             // 
             this.labelResDesc.AutoSize = true;
             this.labelResDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelResDesc.Location = new System.Drawing.Point(1145, 372);
+            this.labelResDesc.Location = new System.Drawing.Point(685, 421);
             this.labelResDesc.Name = "labelResDesc";
             this.labelResDesc.Size = new System.Drawing.Size(0, 25);
             this.labelResDesc.TabIndex = 9;
             // 
-            // showInputImage
+            // menuStrip1
             // 
-            this.showInputImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showInputImage.Location = new System.Drawing.Point(392, 463);
-            this.showInputImage.Name = "showInputImage";
-            this.showInputImage.Size = new System.Drawing.Size(285, 66);
-            this.showInputImage.TabIndex = 10;
-            this.showInputImage.Text = "Показать обрабатываемое изображение";
-            this.showInputImage.UseVisualStyleBackColor = true;
-            this.showInputImage.Click += new System.EventHandler(this.showInputImage_Click);
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem,
+            this.обучитьСетьToolStripMenuItem,
+            this.запускСетиToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1017, 28);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnResetSamples
+            // сохранитьЗагрузитьОбразцыToolStripMenuItem
             // 
-            this.btnResetSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnResetSamples.Location = new System.Drawing.Point(798, 635);
-            this.btnResetSamples.Name = "btnResetSamples";
-            this.btnResetSamples.Size = new System.Drawing.Size(261, 66);
-            this.btnResetSamples.TabIndex = 11;
-            this.btnResetSamples.Text = "Удалить сохранённые образцы";
-            this.btnResetSamples.UseVisualStyleBackColor = true;
-            this.btnResetSamples.Click += new System.EventHandler(this.btnResetSamples_Click);
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.используемыеОбразцыToolStripMenuItem,
+            this.исходноеИзображениеToolStripMenuItem,
+            this.обрабатываемоеИзображениеToolStripMenuItem,
+            this.используемаяНейроннаяСетьToolStripMenuItem});
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem.Name = "сохранитьЗагрузитьОбразцыToolStripMenuItem";
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.сохранитьЗагрузитьОбразцыToolStripMenuItem.Text = "Меню";
             // 
-            // rbthHamming
+            // используемыеОбразцыToolStripMenuItem
             // 
-            this.rbthHamming.AutoSize = true;
-            this.rbthHamming.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rbthHamming.Location = new System.Drawing.Point(25, 37);
-            this.rbthHamming.Name = "rbthHamming";
-            this.rbthHamming.Size = new System.Drawing.Size(183, 29);
-            this.rbthHamming.TabIndex = 12;
-            this.rbthHamming.TabStop = true;
-            this.rbthHamming.Text = "Сеть Хэмминга";
-            this.rbthHamming.UseVisualStyleBackColor = true;
-            this.rbthHamming.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.используемыеОбразцыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1,
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem});
+            this.используемыеОбразцыToolStripMenuItem.Name = "используемыеОбразцыToolStripMenuItem";
+            this.используемыеОбразцыToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.используемыеОбразцыToolStripMenuItem.Text = "Используемые образцы";
             // 
-            // rbtnHebb
+            // saveToolStripMenuItem
             // 
-            this.rbtnHebb.AutoSize = true;
-            this.rbtnHebb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rbtnHebb.Location = new System.Drawing.Point(25, 72);
-            this.rbtnHebb.Name = "rbtnHebb";
-            this.rbtnHebb.Size = new System.Drawing.Size(141, 29);
-            this.rbtnHebb.TabIndex = 13;
-            this.rbtnHebb.TabStop = true;
-            this.rbtnHebb.Text = "Сеть Хэбба";
-            this.rbtnHebb.UseVisualStyleBackColor = true;
-            this.rbtnHebb.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(406, 26);
+            this.saveToolStripMenuItem.Text = "Сохранить образцы в файл";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // groupBox2
+            // загрузитьОбразцыИзФайлаToolStripMenuItem1
             // 
-            this.groupBox2.Controls.Add(this.rbtnHebb);
-            this.groupBox2.Controls.Add(this.rbthHamming);
-            this.groupBox2.Location = new System.Drawing.Point(24, 535);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(319, 154);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Используемая сеть";
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1.Name = "загрузитьОбразцыИзФайлаToolStripMenuItem1";
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1.Size = new System.Drawing.Size(406, 26);
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1.Text = "Загрузить образцы из файла";
+            this.загрузитьОбразцыИзФайлаToolStripMenuItem1.Click += new System.EventHandler(this.загрузитьОбразцыИзФайлаToolStripMenuItem1_Click);
             // 
-            // btnLearnNetwork
+            // очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem
             // 
-            this.btnLearnNetwork.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLearnNetwork.Location = new System.Drawing.Point(49, 110);
-            this.btnLearnNetwork.Name = "btnLearnNetwork";
-            this.btnLearnNetwork.Size = new System.Drawing.Size(261, 45);
-            this.btnLearnNetwork.TabIndex = 15;
-            this.btnLearnNetwork.Text = "Обучить";
-            this.btnLearnNetwork.UseVisualStyleBackColor = true;
-            this.btnLearnNetwork.Click += new System.EventHandler(this.btnLearnNetwork_Click);
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem.Name = "очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem";
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem.Size = new System.Drawing.Size(406, 26);
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem.Text = "Очистить коллекцию используемых образцов";
+            this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem.Click += new System.EventHandler(this.очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem_Click);
+            // 
+            // исходноеИзображениеToolStripMenuItem
+            // 
+            this.исходноеИзображениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.показатьОбрабатываемоеToolStripMenuItem,
+            this.сохранитьКакОбразецToolStripMenuItem,
+            this.очиститьToolStripMenuItem});
+            this.исходноеИзображениеToolStripMenuItem.Name = "исходноеИзображениеToolStripMenuItem";
+            this.исходноеИзображениеToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.исходноеИзображениеToolStripMenuItem.Text = "Исходное изображение";
+            // 
+            // показатьОбрабатываемоеToolStripMenuItem
+            // 
+            this.показатьОбрабатываемоеToolStripMenuItem.Name = "показатьОбрабатываемоеToolStripMenuItem";
+            this.показатьОбрабатываемоеToolStripMenuItem.Size = new System.Drawing.Size(373, 26);
+            this.показатьОбрабатываемоеToolStripMenuItem.Text = "Показать обрабатываемое изображение";
+            this.показатьОбрабатываемоеToolStripMenuItem.Click += new System.EventHandler(this.показатьОбрабатываемоеToolStripMenuItem_Click);
+            // 
+            // сохранитьКакОбразецToolStripMenuItem
+            // 
+            this.сохранитьКакОбразецToolStripMenuItem.Name = "сохранитьКакОбразецToolStripMenuItem";
+            this.сохранитьКакОбразецToolStripMenuItem.Size = new System.Drawing.Size(373, 26);
+            this.сохранитьКакОбразецToolStripMenuItem.Text = "Сохранить как образец";
+            this.сохранитьКакОбразецToolStripMenuItem.Click += new System.EventHandler(this.сохранитьКакОбразецToolStripMenuItem_Click);
+            // 
+            // очиститьToolStripMenuItem
+            // 
+            this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
+            this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(373, 26);
+            this.очиститьToolStripMenuItem.Text = "Очистить";
+            this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
+            // 
+            // обрабатываемоеИзображениеToolStripMenuItem
+            // 
+            this.обрабатываемоеИзображениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.обрабатываемоеИзображениеToolStripMenuItem.Name = "обрабатываемоеИзображениеToolStripMenuItem";
+            this.обрабатываемоеИзображениеToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.обрабатываемоеИзображениеToolStripMenuItem.Text = "Обрабатываемое изображение";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(399, 26);
+            this.toolStripMenuItem2.Text = "Количество сегментов вдоль каждой из осей";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem3.Text = "3";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem4.Text = "4";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem5.Text = "6";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem6.Text = "8";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem7.Text = "12";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 26);
+            this.toolStripMenuItem8.Text = "16";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
+            // используемаяНейроннаяСетьToolStripMenuItem
+            // 
+            this.используемаяНейроннаяСетьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.используемаяНейроннаяСетьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сетьХеммингаToolStripMenuItem,
+            this.сетьХеббаToolStripMenuItem});
+            this.используемаяНейроннаяСетьToolStripMenuItem.Name = "используемаяНейроннаяСетьToolStripMenuItem";
+            this.используемаяНейроннаяСетьToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.используемаяНейроннаяСетьToolStripMenuItem.Text = "Используемая нейронная сеть";
+            // 
+            // сетьХеммингаToolStripMenuItem
+            // 
+            this.сетьХеммингаToolStripMenuItem.Name = "сетьХеммингаToolStripMenuItem";
+            this.сетьХеммингаToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.сетьХеммингаToolStripMenuItem.Text = "Сеть Хэмминга";
+            this.сетьХеммингаToolStripMenuItem.Click += new System.EventHandler(this.сетьХеммингаToolStripMenuItem_Click);
+            // 
+            // сетьХеббаToolStripMenuItem
+            // 
+            this.сетьХеббаToolStripMenuItem.Name = "сетьХеббаToolStripMenuItem";
+            this.сетьХеббаToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.сетьХеббаToolStripMenuItem.Text = "Сеть Хэбба";
+            this.сетьХеббаToolStripMenuItem.Click += new System.EventHandler(this.сетьХеббаToolStripMenuItem_Click);
+            // 
+            // обучитьСетьToolStripMenuItem
+            // 
+            this.обучитьСетьToolStripMenuItem.Name = "обучитьСетьToolStripMenuItem";
+            this.обучитьСетьToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.обучитьСетьToolStripMenuItem.Text = "Обучить сеть";
+            this.обучитьСетьToolStripMenuItem.Click += new System.EventHandler(this.обучитьСетьToolStripMenuItem_Click);
+            // 
+            // запускСетиToolStripMenuItem
+            // 
+            this.запускСетиToolStripMenuItem.Name = "запускСетиToolStripMenuItem";
+            this.запускСетиToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.запускСетиToolStripMenuItem.Text = "Классифицировать";
+            this.запускСетиToolStripMenuItem.Click += new System.EventHandler(this.запускСетиToolStripMenuItem_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(15, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(222, 25);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Исходное изоражение";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1464, 739);
-            this.Controls.Add(this.btnLearnNetwork);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnResetSamples);
-            this.Controls.Add(this.showInputImage);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1017, 423);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.labelResDesc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pbResult);
-            this.Controls.Add(this.btnLoadSamplesFromFile);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnAddToSamples);
-            this.Controls.Add(this.btnSaveSampleToFile);
-            this.Controls.Add(this.btnRun);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnClearInitPB);
             this.Controls.Add(this.picBoxCropped);
             this.Controls.Add(this.picBoxInit);
+            this.Controls.Add(this.menuStrip1);
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picBoxInit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCropped)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbResult)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,24 +354,34 @@
 
         private System.Windows.Forms.PictureBox picBoxInit;
         private System.Windows.Forms.PictureBox picBoxCropped;
-        private System.Windows.Forms.Button btnClearInitPB;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnRun;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DomainUpDown compImageResolution;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSaveSampleToFile;
-        private System.Windows.Forms.Button btnAddToSamples;
-        private System.Windows.Forms.Button btnLoadSamplesFromFile;
         private System.Windows.Forms.PictureBox pbResult;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelResDesc;
-        private System.Windows.Forms.Button showInputImage;
-        private System.Windows.Forms.Button btnResetSamples;
-        private System.Windows.Forms.RadioButton rbthHamming;
-        private System.Windows.Forms.RadioButton rbtnHebb;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnLearnNetwork;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьЗагрузитьОбразцыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem исходноеИзображениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem показатьОбрабатываемоеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem используемыеОбразцыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьОбразцыИзФайлаToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обрабатываемоеИзображениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem используемаяНейроннаяСетьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сетьХеббаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сетьХеммингаToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьКакОбразецToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обучитьСетьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запускСетиToolStripMenuItem;
     }
 }
 

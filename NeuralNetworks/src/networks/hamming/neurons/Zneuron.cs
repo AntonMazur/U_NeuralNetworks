@@ -20,7 +20,7 @@ namespace NeuralNetworks.src.networks.hamming.neurons
 
             for (int i = 0; i < sample.Length; i++)
             {
-                sample[i] = inputWeights[sampleIndex, i];
+                sample[i] = inputWeights[sampleIndex, i] * 0.5;
             }
 
             this.sampleIndex = sampleIndex;

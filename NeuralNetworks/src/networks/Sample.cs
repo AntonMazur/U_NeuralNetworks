@@ -35,7 +35,7 @@ namespace NeuralNetworks.src.networks
                 for (int j = 0; j < width; j++)
                     strBoolArr.Append(imgArr[i, j] ? "1" : "0");
 
-            return description.Length + " " + description + " " + height + " " + width + " " + strBoolArr.ToString() + "\n";
+            return description.Length + " " + description + " " + height + " " + width + " " + strBoolArr.ToString() + Environment.NewLine;
         }
 
         public BitArray asBitArray() { return flattenImgArr; }

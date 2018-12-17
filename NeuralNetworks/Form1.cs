@@ -20,14 +20,20 @@ namespace NeuralNetworks
     {
         Point lastPoint = Point.Empty;
         bool isMousePressed = false;
+        ToolStripMenuItem lastChecked;
+        ToolStripMenuItem choosenNetwork;
         FormState state = new FormState();
         
 
         public Form1()
         {
             InitializeComponent();
-            rbthHamming.Checked = true;
-            compImageResolution.SelectedItem = compImageResolution.Items[0];
+            lastChecked = toolStripMenuItem4;
+            toolStripMenuItem4.Checked = true;
+            state.segCount = 4;
+            choosenNetwork = сетьХеммингаToolStripMenuItem;
+            сетьХеммингаToolStripMenuItem.Checked = true;
+            //rbthHamming.Checked = true;
         }
 
         private void picBoxInit_MouseDown(object sender, MouseEventArgs e)
@@ -68,12 +74,6 @@ namespace NeuralNetworks
             picBoxInit.Invalidate();
         }
 
-        private void btnClearInitPB_Click(object sender, EventArgs e)
-        {
-            picBoxInit.Image = null;
-            Invalidate();
-        }
-
         private Image getInitImage()
         {
             if (picBoxInit.Image == null)
@@ -84,39 +84,15 @@ namespace NeuralNetworks
             return picBoxInit.Image;
         }
 
-        private void btnRun_Click(object sender, EventArgs e)
-        {
-            showInputImage_Click(sender, e);
-
-            Sample targetSample = null;
-
-            switch (state.chosenNetwork)
-            {
-                case 1:
-                    targetSample = hamming.Network.run(state.samples.ToArray(), new Sample("Test sample", state.pbState.imgArr));
-                    break;
-                case 0:
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            pbResult.Image = MonoImage.getCompressedImage(targetSample.imgArr);
-            labelResDesc.Text = targetSample.description;
-        }
-
         private MonoImage getWorkingImage()
         {
-            int[] widthAndHeight = compImageResolution.Text.Split(';').Select(str => int.Parse(str)).ToArray();
-            return new MonoImage(getInitImage(), widthAndHeight[0], widthAndHeight[1]);
+            return new MonoImage(getInitImage(), state.segCount, state.segCount);
         }
 
-        private void btnSaveSampleToFile_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.state.pbState != null)
+            if (this.state.samples.Count() != 0)
             {
-                var descriptionForm = new SampleDescriptionForm();
-                descriptionForm.ShowDialog();
                 Stream myStream;
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -133,21 +109,20 @@ namespace NeuralNetworks
                         myStream.Close();
                     }
                 }
-                MessageBox.Show(descriptionForm.getInput());
             }
         }
 
-        private void btnLoadSamplesFromFile_Click(object sender, EventArgs e)
+        private void загрузитьОбразцыИзФайлаToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var ofd = new OpenFileDialog();
-            DialogResult result = ofd.ShowDialog(); 
+            DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
                 string file = ofd.FileName;
                 try
                 {
                     string text = File.ReadAllText(file);
-                    foreach (var line in text.Split('\n'))
+                    foreach (var line in text.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.None))
                     {
                         state.addSample(line == "" ? null : Sample.FromString(line));
                     }
@@ -159,9 +134,84 @@ namespace NeuralNetworks
             }
         }
 
-        private void btnAddToSamples_Click(object sender, EventArgs e)
+        private void очиститьКоллекциюИспользуемыхОбразцовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showInputImage_Click(sender, e);
+            state.samples.Clear();
+        }
+
+        private void показатьОбрабатываемоеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var workingImage = getWorkingImage();
+            picBoxCropped.Image = workingImage.getCompressedImage();
+            this.state.pbState = new WorkingPicBoxState(workingImage.getCompressedImageArr());
+        }
+
+        private void очиститьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            picBoxInit.Image = null;
+            Invalidate();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            changedSegmentCount(sender);
+        }
+
+        private void changedSegmentCount(object sender)
+        {
+            var menuItem = (ToolStripMenuItem)sender;
+            state.segCount = int.Parse(menuItem.Text);
+            menuItem.Checked = true;
+            lastChecked.Checked = false;
+            lastChecked = menuItem;
+        }
+
+        private void сетьХеббаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            changedNetwork(sender);
+        }
+
+        private void сетьХеммингаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            changedNetwork(sender);
+        }
+
+        private void changedNetwork(object sender)
+        {
+            var menuItem = (ToolStripMenuItem)sender;
+            choosenNetwork.Checked = false;
+            choosenNetwork = menuItem;
+            menuItem.Checked = true;
+        }
+
+        private void сохранитьКакОбразецToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            показатьОбрабатываемоеToolStripMenuItem_Click(sender, e);
 
             var descriptionForm = new SampleDescriptionForm();
             descriptionForm.ShowDialog();
@@ -169,39 +219,38 @@ namespace NeuralNetworks
             state.addSample(new Sample(descriptionForm.getInput(), state.pbState.imgArr));
         }
 
-        private void showInputImage_Click(object sender, EventArgs e)
+        private void обучитьСетьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var workingImage = getWorkingImage();
-            picBoxCropped.Image = workingImage.getCompressedImage();
-            this.state.pbState = new WorkingPicBoxState(workingImage.getCompressedImageArr());
-        }
-
-        private void btnResetSamples_Click(object sender, EventArgs e)
-        {
-            state.samples.Clear();
-        }
-
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            var rb = sender as RadioButton;
-            if (!rb.Checked) return;
-            state.chosenNetwork = rb.Parent.Controls.IndexOf(rb);
-            MessageBox.Show("Chosen network: " + state.chosenNetwork);
-        }
-
-        private void btnLearnNetwork_Click(object sender, EventArgs e)
-        {
-            switch (state.chosenNetwork)
+            switch (choosenNetwork.Text)
             {
-                case 1:
-                    return;
+                case "Сеть Хэбба":
+                    hebb.Network.learn(state.samples.ToArray());
                     break;
-                case 0:
-                    hebb.Network.
+                default:
+                    return;
+            }
+        }
+
+        private void запускСетиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            показатьОбрабатываемоеToolStripMenuItem_Click(sender, e);
+            var testSample = new Sample("Test sample", state.pbState.imgArr);
+            Sample targetSample = null;
+
+            switch (choosenNetwork.Text)
+            {
+                case "Сеть Хэмминга":
+                    targetSample = hamming.Network.run(state.samples.ToArray(), new Sample("Test sample", state.pbState.imgArr));
+                    break;
+                case "Сеть Хэбба":
+                    targetSample = hebb.Network.run(state.samples.ToArray(), testSample);
                     break;
                 default:
                     throw new NotImplementedException();
             }
+
+            pbResult.Image = MonoImage.getCompressedImage(targetSample.imgArr);
+            labelResDesc.Text = targetSample.description;
         }
     }
 
@@ -220,6 +269,7 @@ namespace NeuralNetworks
         public WorkingPicBoxState pbState { get; set; }
         public List<Sample> samples = new List<Sample>();
         public int chosenNetwork = 1;
+        public int segCount;
 
         public bool addSample(Sample sample)
         {
@@ -233,5 +283,11 @@ namespace NeuralNetworks
             return String.Join("", samples.Select(s => s.ToString()));
         }
 
+    }
+
+    enum UsingNetwork
+    {
+        HAMMING,
+        HEBB
     }
 }

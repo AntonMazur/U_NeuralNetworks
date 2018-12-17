@@ -13,7 +13,7 @@ namespace NeuralNetworks.src.networks.hamming
         {
             var firstLawerWeights = Sample.toWeightArray(samples);
             var zNeurons = new ZNeuron[samples.Length];
-            ZNeuron.setK(0.1);
+            ZNeuron.setK(1d/testSample.area);
 
             for (int i = 0; i < samples.Length; i++)
             {

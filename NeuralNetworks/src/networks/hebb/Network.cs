@@ -9,14 +9,35 @@ namespace NeuralNetworks.src.networks.hebb
 {
     class Network
     {
+        private static HebbSample[] canonicalSamples;
+        private static int[,] resWeights;
+
         public static Sample run(Sample[] samples, Sample testSample)
         {
+            var len = testSample.area;
+            var binTestSample = testSample.asBitArray();
+            var idx = 0;
+            var posReactCount = 0;
 
-            //double[] weights = learn()
+            for (int i = 0; i < resWeights.GetLength(0); i++)
+            {
+                var res = resWeights[i, resWeights.GetLength(1) - 1];
+                for (int j = 0; j < resWeights.GetLength(1) - 1; j++)
+                {
+                    res += resWeights[i, j] * (Utils.boolToInt(binTestSample[j]) + 1) / 2;
+                }
+                if (res > 0)
+                {
+                    posReactCount++;
+                    idx = i;
+                }
+            }
+
             
-
-            throw new NotImplementedException("No implementation for hebb network");
-        }
+                return canonicalSamples[idx].getPrimeSample();
+            
+            
+         }
 
         public static Sample run(Sample[] samples, string weightsFile, Sample testSample)
         {
@@ -26,54 +47,67 @@ namespace NeuralNetworks.src.networks.hebb
 
         }
 
-        private static double[,] learn(Sample[] samples)
+        public static void learn(Sample[] samples)
         {
-            var hSamples = HebbSample.convertAll(samples);
-            int sampleLen = samples[0].area;
             HebbSample.resetState();
             HebbSample.digitCount = samples.Length;
-            double[,] weights = new double[HebbSample.digitCount, sampleLen];  // row - weights of edges from inputs to first neuron, column - weights of edges from the input to all neurons
-
-
-            for (int k = 0; k < samples.Length; k++)
+            var hSamples = HebbSample.convertAll(samples);
+            int sampleLen = samples[0].area;
+            int[,] weights = new int[HebbSample.digitCount, sampleLen + 1];  // row - weights of edges from inputs to first neuron, column - weights of edges from the input to all neurons
+            int iter = 0;
+            for (iter = 0; iter < 1000; iter++)
             {
-                var sampleArr = samples[k].asBitArray();
-                bool failOccured;
-
-                do
+                for (int k = 0; k < samples.Length; k++)
                 {
-                    failOccured = false;
+                    var sampleArr = samples[k].asBitArray();
+                    bool failOccured;
 
-                    for (int i = 0; i < HebbSample.digitCount; i++)
+                    do
                     {
-                        var output = 0d;
+                        failOccured = false;
 
-                        for (int j = 0; j < sampleLen; j++)
+                        for (int i = 0; i < HebbSample.digitCount; i++)
                         {
-                            output += weights[i, j] * Utils.boolToNum(sampleArr[j]);
-                        }
 
-                        output = output > 0 ? 1 : -1;
-
-                        if (output * hSamples[i].getNeuronOutput(i) < 0)
-                        {
-                            failOccured = true;
+                            var output = 0;
 
                             for (int j = 0; j < sampleLen; j++)
                             {
-                                weights[i, j] = getWeightDelta(Utils.boolToNum(sampleArr[j]), output);
+                                output += weights[i, j] * Utils.boolToInt(sampleArr[j]);
                             }
-                        }
 
-                    }
-                } while (failOccured);
+                            output += weights[k, sampleLen];
+
+                            output = output > 0 ? 1 : -1;
+
+                            var properOutput = hSamples[k].getNeuronOutput(i);
+
+                            if (output != properOutput)
+                            {
+                                failOccured = true;
+
+                                for (int j = 0; j < sampleLen; j++)
+                                {
+                                    weights[i, j] += getWeightDelta(Utils.boolToInt(sampleArr[j]), properOutput);
+                                }
+
+                                weights[i, sampleLen] += properOutput;
+                            }
+
+                        }
+                    } while (failOccured);
+                    
+                }
 
             }
+            canonicalSamples = hSamples;
+            resWeights = weights;
 
-            return weights;
         }
 
-        private static double getWeightDelta(double input, double output)
+        //private static modifyWeights(int neuronNum, int[] sample, int[,] weights)
+
+        private static int getWeightDelta(int input, int output)
         {
             if (input == 0) return 0;
 
@@ -101,7 +135,7 @@ namespace NeuralNetworks.src.networks.hebb
         public static int digitCount = 0;
         public static int counter = 0;
         private Sample sample;
-        private double[] networkOutput;
+        private int[] networkOutput;
 
         public HebbSample(Sample sample)
         {
@@ -109,7 +143,7 @@ namespace NeuralNetworks.src.networks.hebb
             this.networkOutput = getNextSampleOutput();
         }
 
-        public double getNeuronOutput(int neuronNum)
+        public int getNeuronOutput(int neuronNum)
         {
             return networkOutput[neuronNum];
         }
@@ -125,13 +159,13 @@ namespace NeuralNetworks.src.networks.hebb
             return samples.Select(s => new HebbSample(s)).ToArray();
         }
 
-        private static double[] getNextSampleOutput()
+        public Sample getPrimeSample() { return sample; }
+
+        private static int[] getNextSampleOutput()
         {
-            var result = new double[digitCount];
+            var result = new int[digitCount];
 
-            for (int i = 0; i < digitCount; i++)
-                result[i] = -1;
-
+            result = result.Select(v => -1).ToArray();
             result[counter++] = 1;
 
             return result;

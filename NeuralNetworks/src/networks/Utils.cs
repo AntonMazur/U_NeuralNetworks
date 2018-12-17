@@ -12,5 +12,10 @@ namespace NeuralNetworks.src.networks
         {
             return val ? 1 : -1;
         }
+
+        public static int boolToInt(bool val)
+        {
+            return val ? 1 : -1;
+        }
     }
 }
